@@ -24,14 +24,14 @@ export function VSLPlayer() {
       return false;
     };
 
-    // Checa a cada 150ms
+    // Checa a cada 100ms
     const interval = setInterval(() => {
       if (checkReady()) {
-        // Adiciona um pequeno delay para garantir que a thumbnail renderizou visualmente
-        setTimeout(() => setIsReady(true), 400);
+        // Libera imediatamente ao detectar o player
+        setIsReady(true);
         clearInterval(interval);
       }
-    }, 150);
+    }, 100);
 
     // Fallback de segurança: libera a tela após 4 segundos de qualquer forma
     // para garantir que o usuário nunca fique travado na tela de carregamento

@@ -1,6 +1,8 @@
 import { 
   CheckCircle2, 
   ChevronDown, 
+  ChevronLeft,
+  ChevronRight,
   ShieldCheck, 
   Smartphone, 
   Users, 
@@ -95,6 +97,16 @@ const TimerBanner = memo(() => {
 
 export default function App() {
   const [isUpsellModalOpen, setIsUpsellModalOpen] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollRef.current) {
+      const { scrollLeft, clientWidth } = scrollRef.current;
+      const scrollAmount = window.innerWidth < 640 ? 320 : 400;
+      const scrollTo = direction === 'left' ? scrollLeft - scrollAmount : scrollLeft + scrollAmount;
+      scrollRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' });
+    }
+  };
 
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-brand-purple selection:text-white">
@@ -189,9 +201,30 @@ export default function App() {
           </div>
         </motion.div>
 
-        {/* Marquee de Frustrações */}
-        <div className="relative flex overflow-x-hidden group gap-6">
-          <div className="animate-marquee flex shrink-0 gap-6 w-max group-hover:[animation-play-state:paused] will-change-transform">
+        {/* Slider de Frustrações com Setas */}
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Botões de Navegação */}
+          <button 
+            onClick={() => scroll('left')}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-30 bg-white/90 hover:bg-white text-slate-800 p-3 rounded-full shadow-lg border border-slate-200 transition-all hover:scale-110 active:scale-95 hidden sm:flex items-center justify-center"
+            aria-label="Anterior"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+          
+          <button 
+            onClick={() => scroll('right')}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-30 bg-white/90 hover:bg-white text-slate-800 p-3 rounded-full shadow-lg border border-slate-200 transition-all hover:scale-110 active:scale-95 hidden sm:flex items-center justify-center"
+            aria-label="Próximo"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+
+          <div 
+            ref={scrollRef}
+            className="flex overflow-x-auto gap-6 pb-8 scrollbar-hide snap-x snap-mandatory"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
             {[
               { img: "https://i.imgur.com/9Ze80hV.png", text: "Você faz uma pergunta… olha para o grupo… e ninguém responde." },
               { img: "https://i.imgur.com/zXZ9erh.png", text: "Alguns começam a mexer no celular, outros ficam quietos esperando a reunião acabar." },
@@ -199,9 +232,9 @@ export default function App() {
               { img: "https://i.imgur.com/SUuLCWr.png", text: "Você passa muito tempo procurando ideias na internet ou tentando improvisar uma atividade." },
               { img: "https://i.imgur.com/xXVNekZ.png", text: "A célula acontece… mas parece mais uma conversa parada do que um encontro vivo." }
             ].map((item, i) => (
-              <div key={i} className="w-[300px] sm:w-[350px] bg-white p-4 rounded-2xl shadow-sm border-2 border-blue-500 flex flex-col gap-4 items-center hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 group cursor-default transform-gpu">
+              <div key={i} className="flex-shrink-0 w-[280px] sm:w-[350px] bg-white p-4 rounded-2xl shadow-sm border-2 border-blue-500 flex flex-col gap-4 items-center transition-all duration-300 snap-center">
                 <div className="w-full rounded-xl overflow-hidden bg-slate-100 aspect-video flex items-center justify-center">
-                  <img src={item.img} alt="Frustração" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 transform-gpu" referrerPolicy="no-referrer" loading="lazy" decoding="async" />
+                  <img src={item.img} alt="Frustração" width="350" height="197" className="w-full h-full object-cover" referrerPolicy="no-referrer" loading="lazy" decoding="async" />
                 </div>
                 <p className="text-slate-700 text-base leading-relaxed font-medium text-center px-2 pb-2">
                   {item.text}
@@ -209,24 +242,11 @@ export default function App() {
               </div>
             ))}
           </div>
-          {/* Cópia para o loop infinito */}
-          <div className="animate-marquee flex shrink-0 gap-6 w-max group-hover:[animation-play-state:paused] will-change-transform" aria-hidden="true">
-            {[
-              { img: "https://i.imgur.com/9Ze80hV.png", text: "Você faz uma pergunta… olha para o grupo… e ninguém responde." },
-              { img: "https://i.imgur.com/zXZ9erh.png", text: "Alguns começam a mexer no celular, outros ficam quietos esperando a reunião acabar." },
-              { img: "https://i.imgur.com/leQVQJ1.png", text: "Toda semana você precisa pensar em algo novo para manter o grupo interessado." },
-              { img: "https://i.imgur.com/SUuLCWr.png", text: "Você passa muito tempo procurando ideias na internet ou tentando improvisar uma atividade." },
-              { img: "https://i.imgur.com/xXVNekZ.png", text: "A célula acontece… mas parece mais uma conversa parada do que um encontro vivo." }
-            ].map((item, i) => (
-              <div key={i} className="w-[300px] sm:w-[350px] bg-white p-4 rounded-2xl shadow-sm border-2 border-blue-500 flex flex-col gap-4 items-center hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 group cursor-default transform-gpu">
-                <div className="w-full rounded-xl overflow-hidden bg-slate-100 aspect-video flex items-center justify-center">
-                  <img src={item.img} alt="Frustração" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 transform-gpu" referrerPolicy="no-referrer" loading="lazy" decoding="async" />
-                </div>
-                <p className="text-slate-700 text-base leading-relaxed font-medium text-center px-2 pb-2">
-                  {item.text}
-                </p>
-              </div>
-            ))}
+          
+          {/* Indicador visual para mobile */}
+          <div className="flex justify-center gap-2 mt-2 sm:hidden">
+            <button onClick={() => scroll('left')} className="p-2 bg-slate-100 rounded-full"><ChevronLeft className="w-5 h-5" /></button>
+            <button onClick={() => scroll('right')} className="p-2 bg-slate-100 rounded-full"><ChevronRight className="w-5 h-5" /></button>
           </div>
         </div>
       </section>
@@ -252,7 +272,7 @@ export default function App() {
           {/* Mockup Image */}
           <div className="w-full max-w-4xl mx-auto relative flex justify-center">
             <div className="absolute inset-0 bg-gradient-to-tr from-brand-purple/20 to-brand-blue/20 rounded-[3rem] blur-3xl -z-10 transform rotate-2 scale-105"></div>
-            <img src="https://i.imgur.com/ZS9ggsf.webp" alt="Mockup do Material" className="w-full h-auto object-contain drop-shadow-2xl rounded-2xl" referrerPolicy="no-referrer" loading="lazy" decoding="async" />
+            <img src="https://i.imgur.com/ZS9ggsf.webp" alt="Mockup do Material" width="800" height="600" className="w-full h-auto object-contain drop-shadow-2xl rounded-2xl" referrerPolicy="no-referrer" loading="lazy" decoding="async" />
           </div>
         </motion.div>
       </section>
@@ -316,6 +336,8 @@ export default function App() {
                   <img 
                     src={bonus.image} 
                     alt={bonus.title} 
+                    width="320"
+                    height="400"
                     className={`w-full h-full object-contain transition-transform duration-500 transform-gpu ${i === 4 ? 'scale-110 group-hover:scale-125' : 'scale-95 group-hover:scale-105'}`}
                     referrerPolicy="no-referrer"
                     loading="lazy"
@@ -385,55 +407,55 @@ export default function App() {
             </div>
 
             {/* Plano Completo */}
-            <div className="bg-gradient-to-br from-brand-purple to-brand-blue-dark p-5 sm:p-6 rounded-[24px] border-4 border-[#FFD700] shadow-[0_20px_50px_rgba(0,0,0,0.3),0_0_30px_rgba(255,215,0,0.2)] flex flex-col h-full relative transform md:-translate-y-6 hover:scale-[1.03] transition-all duration-500 z-20 group max-w-sm mx-auto md:max-w-none">
-              <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#FFD700] via-[#FFFACD] to-[#FFD700] text-amber-950 px-6 py-2 rounded-full text-[10px] sm:text-xs font-black uppercase tracking-widest shadow-[0_4px_15px_rgba(255,215,0,0.5)] whitespace-nowrap flex items-center gap-2 border-2 border-white/20 animate-pulse">
-                <Star className="w-3.5 h-3.5 fill-amber-950" /> 
+            <div className="bg-gradient-to-br from-brand-purple to-brand-blue-dark p-6 sm:p-8 rounded-[24px] border-4 border-[#FFD700] shadow-[0_20px_50px_rgba(0,0,0,0.3),0_0_30px_rgba(255,215,0,0.2)] flex flex-col h-full relative transform md:-translate-y-8 hover:scale-[1.05] transition-all duration-500 z-20 group">
+              <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#FFD700] via-[#FFFACD] to-[#FFD700] text-amber-950 px-8 py-2.5 rounded-full text-xs sm:text-sm font-black uppercase tracking-widest shadow-[0_4px_15px_rgba(255,215,0,0.5)] whitespace-nowrap flex items-center gap-2 border-2 border-white/20 animate-pulse">
+                <Star className="w-4 h-4 fill-amber-950" /> 
                 MAIS POPULAR ENTRE LÍDERES
-                <Star className="w-3.5 h-3.5 fill-amber-950" />
+                <Star className="w-4 h-4 fill-amber-950" />
               </div>
               
-              <div className="text-center mb-6 mt-4">
-                <h3 className="text-xl font-black text-white mb-4 uppercase tracking-tight">Plano Completo</h3>
-                <div className="inline-block px-3 py-0.5 rounded-md bg-white/10 text-[#FFD700] text-[10px] font-black uppercase tracking-[0.2em] mb-3 border border-[#FFD700]/30">
+              <div className="text-center mb-8 mt-6">
+                <h3 className="text-2xl font-black text-white mb-6 uppercase tracking-tight">Plano Completo</h3>
+                <div className="inline-block px-4 py-1 rounded-md bg-white/10 text-[#FFD700] text-sm font-black uppercase tracking-[0.2em] mb-4 border border-[#FFD700]/30">
                   HOJE POR APENAS
                 </div>
-                <div className="flex items-center justify-center text-6xl font-black text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)]">
-                  <span className="text-2xl font-bold text-white/70 mr-1.5 -mt-8">R$</span>24,90
+                <div className="flex items-center justify-center text-8xl font-black text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)]">
+                  <span className="text-3xl font-bold text-white/70 mr-2 -mt-10">R$</span>24,90
                 </div>
-                <div className="mt-2 text-orange-400 font-bold text-xs animate-pulse flex items-center justify-center gap-1.5">
-                  <Clock className="w-3.5 h-3.5" />
-                  OFERTA POR TEMPO LIMITADO
+                <div className="mt-2 text-orange-400 font-bold text-sm animate-pulse flex items-center justify-center gap-1.5">
+                  <Clock className="w-4 h-4" />
+                  OFERTA POR TEMPO LIMITADO: ÚLTIMAS HORAS
                 </div>
               </div>
               
-              <ul className="space-y-3 mb-8 flex-1">
+              <ul className="space-y-4 mb-10 flex-1">
                 {[
                   "+200 dinâmicas bíblicas",
                   <span key="bonus" className="text-[#FFD700] font-black drop-shadow-sm">TODOS OS BÔNUS INCLUSOS</span>,
-                  "Atualizações vitalícias",
+                  "Atualizações futuras vitalícias",
                   "Material extra exclusivo",
-                  "Suporte via WhatsApp"
+                  "Suporte prioritário via WhatsApp"
                 ].map((feature, i) => (
-                  <li key={i} className="flex items-center gap-2.5 text-white font-medium text-base">
-                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-white/20 flex items-center justify-center border border-white/30">
-                      <CheckCircle2 className="w-4 h-4 text-[#00C853]" />
+                  <li key={i} className="flex items-center gap-3 text-white font-medium text-lg">
+                    <div className="flex-shrink-0 w-7 h-7 rounded-full bg-white/20 flex items-center justify-center border border-white/30">
+                      <CheckCircle2 className="w-5 h-5 text-[#00C853]" />
                     </div>
                     <span>{feature}</span>
                   </li>
                 ))}
               </ul>
               
-              <div className="space-y-3">
+              <div className="space-y-4">
                 <a 
                   href="https://pay.wiapy.com/KyGiCuIevD" 
-                  className="w-full py-4 px-4 sm:px-6 bg-[#00C853] hover:bg-[#00E676] text-white font-black rounded-xl transition-all shadow-[0_10px_20px_rgba(0,200,83,0.4)] hover:shadow-[0_15px_30px_rgba(0,200,83,0.5)] hover:-translate-y-1 flex flex-col items-center justify-center gap-1 text-base uppercase tracking-wider group-hover:animate-pulse"
+                  className="w-full py-5 px-4 sm:px-6 bg-[#00C853] hover:bg-[#00E676] text-white font-black rounded-2xl transition-all shadow-[0_10px_20px_rgba(0,200,83,0.4)] hover:shadow-[0_15px_30px_rgba(0,200,83,0.5)] hover:-translate-y-1.5 flex flex-col items-center justify-center gap-1 text-base sm:text-lg uppercase tracking-wider group-hover:animate-pulse"
                 >
                   <div className="flex items-center gap-2">
-                    <span>LIBERAR ACESSO AGORA</span>
-                    <Flame className="w-5 h-5 fill-white" />
+                    <span>LIBERAR MEU ACESSO AGORA</span>
+                    <Flame className="w-6 h-6 fill-white" />
                   </div>
                 </a>
-                <p className="text-center text-white/70 text-[10px] font-bold flex items-center justify-center gap-2">
+                <p className="text-center text-white/70 text-sm font-bold flex items-center justify-center gap-2">
                   <span className="text-emerald-400">⚡</span> Acesso imediato + garantia de 7 dias
                 </p>
               </div>
