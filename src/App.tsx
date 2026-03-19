@@ -58,7 +58,7 @@ const TimerBanner = memo(() => {
   const seconds = timeLeft % 60;
 
   return (
-    <div className="bg-gradient-to-r from-indigo-900 via-brand-purple to-indigo-900 text-white py-2 sm:py-2.5 px-2 relative z-50 shadow-md border-b border-white/10">
+    <div className="bg-gradient-to-r from-brand-purple via-brand-blue to-brand-purple text-white py-2 sm:py-2.5 px-2 relative z-50 shadow-md border-b border-white/10">
       <div className="container mx-auto flex flex-row items-center justify-center gap-2 sm:gap-4">
         <div className="flex items-center gap-1.5 sm:gap-2">
           <div className="relative flex h-2 w-2 sm:h-2.5 sm:w-2.5">
@@ -140,33 +140,8 @@ export default function App() {
               +200 Dinâmicas Prontas para <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-purple via-purple-600 to-brand-blue drop-shadow-sm">Engajar Jovens e Crianças</span> na Sua Célula
             </h1>
             
-            <div className="flex flex-col items-center gap-3 mb-10 sm:mb-12 w-full sm:w-auto mt-8 sm:mt-12">
-              <a href="#planos" className="inline-flex items-center justify-center gap-2 w-[90%] sm:w-auto px-8 py-4 bg-gradient-to-r from-[#FFD700] to-[#FFC107] text-amber-950 rounded-xl font-black text-base sm:text-lg transition-all shadow-[0_10px_25px_rgba(255,215,0,0.4)] hover:shadow-[0_15px_35px_rgba(255,215,0,0.5)] hover:-translate-y-1 group transform-gpu border-2 border-white/20">
-                ACESSAR AS +200 DINÂMICAS
-                <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-1 transition-transform transform-gpu" />
-              </a>
-              <span className="text-xs sm:text-sm font-bold text-slate-500 uppercase tracking-wider">
-                🔥 Apenas R$9,90 • acesso imediato
-              </span>
-            </div>
-            
             <div className="pt-6 sm:pt-8 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 w-full max-w-2xl">
-              <div className="flex items-center gap-3">
-                <div className="flex -space-x-3">
-                  {[...Array(5)].map((_, i) => (
-                    <div key={i} className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-slate-200 border-2 border-white flex items-center justify-center overflow-hidden shadow-sm">
-                      <img src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="User" className="w-full h-full object-cover" decoding="async" loading="lazy" />
-                    </div>
-                  ))}
-                </div>
-                <div className="flex flex-col items-start text-xs sm:text-sm">
-                  <div className="flex text-yellow-400 mb-0.5">
-                    {[...Array(5)].map((_, i) => <Star key={i} className="w-3 h-3 sm:w-4 sm:h-4 fill-current" />)}
-                  </div>
-                  <span className="font-bold text-slate-700">+500 líderes já usam</span>
-                </div>
-              </div>
-
+              {/* Social proof moved below testimonials */}
             </div>
 
             {/* VSL NO HERO */}
@@ -178,6 +153,13 @@ export default function App() {
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
                 </svg>
                 ACESSO IMEDIATO VIA WHATSAPP
+              </div>
+
+              <div className="flex flex-col items-center gap-3 mt-10 sm:mt-12 w-full sm:w-auto">
+                <a href="#planos" className="inline-flex items-center justify-center gap-2 w-[90%] sm:w-auto px-8 py-4 bg-gradient-to-r from-[#FFD700] to-[#FFC107] text-amber-950 rounded-xl font-black text-base sm:text-lg transition-all shadow-[0_10px_25px_rgba(255,215,0,0.4)] hover:shadow-[0_15px_35px_rgba(255,215,0,0.5)] hover:-translate-y-1 group transform-gpu border-2 border-white/20">
+                  ACESSAR AS +200 DINÂMICAS
+                  <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-1 transition-transform transform-gpu" />
+                </a>
               </div>
             </div>
 
@@ -232,7 +214,7 @@ export default function App() {
               { img: "https://i.imgur.com/SUuLCWr.png", text: "Você passa muito tempo procurando ideias na internet ou tentando improvisar uma atividade." },
               { img: "https://i.imgur.com/xXVNekZ.png", text: "A célula acontece… mas parece mais uma conversa parada do que um encontro vivo." }
             ].map((item, i) => (
-              <div key={i} className="flex-shrink-0 w-[280px] sm:w-[350px] bg-white p-4 rounded-2xl shadow-sm border-2 border-blue-500 flex flex-col gap-4 items-center transition-all duration-300 snap-center">
+              <div key={i} className="flex-shrink-0 w-[280px] sm:w-[350px] bg-white p-4 rounded-2xl shadow-sm border-2 border-brand-purple/30 flex flex-col gap-4 items-center transition-all duration-300 snap-center">
                 <div className="w-full rounded-xl overflow-hidden bg-slate-100 aspect-video flex items-center justify-center">
                   <img src={item.img} alt="Frustração" width="350" height="197" className="w-full h-full object-cover" referrerPolicy="no-referrer" loading="lazy" decoding="async" />
                 </div>
@@ -351,7 +333,7 @@ export default function App() {
                   <h3 className="text-sm sm:text-base font-bold text-slate-900 mb-2 leading-snug">{bonus.title}</h3>
                   <div className="flex flex-col items-center justify-center gap-0.5 mt-auto">
                     <span className="text-xs text-slate-500 line-through decoration-red-500/50">De R$ {bonus.oldPrice}</span>
-                    <span className="text-[#22C55E] font-black text-xl uppercase tracking-wide">Por Grátis</span>
+                    <span className="text-[#22C55E] font-black text-xl uppercase tracking-wide">por R$ 0,00</span>
                   </div>
                 </div>
               </div>
@@ -377,11 +359,12 @@ export default function App() {
           <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto items-center">
             
             {/* Plano Simples */}
-            <div className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm flex flex-col h-full">
+            <div className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm flex flex-col h-full hover:border-brand-blue/30 transition-all">
               <div className="mb-6">
                 <h3 className="text-xl font-bold text-slate-900">Plano Simples</h3>
-                <div className="mt-4 flex items-baseline text-4xl font-extrabold text-slate-900">
-                  <span className="text-2xl font-medium text-slate-500 mr-1">R$</span>9,90
+                <div className="mt-4 flex items-center text-transparent bg-clip-text bg-gradient-to-r from-brand-purple to-brand-blue drop-shadow-sm">
+                  <span className="text-base font-black mr-1 -mt-2">R$</span>
+                  <span className="text-4xl font-black tracking-tight">9,90</span>
                 </div>
               </div>
               
@@ -389,10 +372,10 @@ export default function App() {
                 {[
                   "+200 dinâmicas bíblicas",
                   "Acesso imediato",
-                  "PDF organizado"
+                  "Material organizado"
                 ].map((feature, i) => (
                   <li key={i} className="flex items-center gap-3 text-slate-700 text-lg">
-                    <CheckCircle2 className="w-6 h-6 text-emerald-500 shrink-0" />
+                    <CheckCircle2 className="w-6 h-6 text-brand-blue shrink-0" />
                     <span>{feature}</span>
                   </li>
                 ))}
@@ -407,57 +390,72 @@ export default function App() {
             </div>
 
             {/* Plano Completo */}
-            <div className="bg-gradient-to-br from-brand-purple to-brand-blue-dark p-6 sm:p-8 rounded-[24px] border-4 border-[#FFD700] shadow-[0_20px_50px_rgba(0,0,0,0.3),0_0_30px_rgba(255,215,0,0.2)] flex flex-col h-full relative transform md:-translate-y-8 hover:scale-[1.05] transition-all duration-500 z-20 group">
-              <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#FFD700] via-[#FFFACD] to-[#FFD700] text-amber-950 px-8 py-2.5 rounded-full text-xs sm:text-sm font-black uppercase tracking-widest shadow-[0_4px_15px_rgba(255,215,0,0.5)] whitespace-nowrap flex items-center gap-2 border-2 border-white/20 animate-pulse">
-                <Star className="w-4 h-4 fill-amber-950" /> 
+            <div className="bg-white p-6 sm:p-8 rounded-[32px] border-4 border-[#FFB800] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.1),0_0_20px_rgba(255,184,0,0.15)] flex flex-col h-full relative transform md:-translate-y-8 hover:scale-[1.02] transition-all duration-500 z-20 group">
+              
+              <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-gradient-to-r from-brand-purple to-brand-blue text-white px-8 py-2.5 rounded-full text-xs sm:text-sm font-black uppercase tracking-widest shadow-[0_4px_15px_rgba(99,102,241,0.4)] whitespace-nowrap flex items-center gap-2 border-2 border-white/20 z-30">
+                <Star className="w-4 h-4 fill-white" /> 
                 MAIS POPULAR ENTRE LÍDERES
-                <Star className="w-4 h-4 fill-amber-950" />
+                <Star className="w-4 h-4 fill-white" />
               </div>
               
-              <div className="text-center mb-8 mt-6">
-                <h3 className="text-2xl font-black text-white mb-6 uppercase tracking-tight">Plano Completo</h3>
-                <div className="inline-block px-4 py-1 rounded-md bg-white/10 text-[#FFD700] text-sm font-black uppercase tracking-[0.2em] mb-4 border border-[#FFD700]/30">
+              <div className="text-center mb-8 mt-6 relative z-10">
+                <h3 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-brand-purple to-brand-blue mb-4 uppercase tracking-tight">Plano Completo</h3>
+                <div className="inline-block px-4 py-1 rounded-md bg-brand-purple/10 text-brand-purple text-sm font-black uppercase tracking-[0.2em] mb-4 border border-brand-purple/20">
                   HOJE POR APENAS
                 </div>
-                <div className="flex items-center justify-center text-8xl font-black text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)]">
-                  <span className="text-3xl font-bold text-white/70 mr-2 -mt-10">R$</span>24,90
-                </div>
-                <div className="mt-2 text-orange-400 font-bold text-sm animate-pulse flex items-center justify-center gap-1.5">
-                  <Clock className="w-4 h-4" />
-                  OFERTA POR TEMPO LIMITADO: ÚLTIMAS HORAS
+                <div className="flex items-start justify-center text-transparent bg-clip-text bg-gradient-to-r from-brand-purple via-purple-600 to-brand-blue drop-shadow-2xl py-4 h-auto px-4 overflow-visible">
+                  <span className="text-lg sm:text-2xl font-black mr-1 mt-1 sm:mt-2">R$</span>
+                  <span className="text-6xl sm:text-7xl font-black tracking-tight leading-none">24,90</span>
                 </div>
               </div>
               
-              <ul className="space-y-4 mb-10 flex-1">
+              <ul className="space-y-4 mb-10 flex-1 relative z-10">
                 {[
                   "+200 dinâmicas bíblicas",
-                  <span key="bonus" className="text-[#FFD700] font-black drop-shadow-sm">TODOS OS BÔNUS INCLUSOS</span>,
-                  "Atualizações futuras vitalícias",
-                  "Material extra exclusivo",
+                  "Acesso imediato e vitalício",
+                  "Material organizado",
+                  "Atualizações futuras inclusas",
                   "Suporte prioritário via WhatsApp"
                 ].map((feature, i) => (
-                  <li key={i} className="flex items-center gap-3 text-white font-medium text-lg">
-                    <div className="flex-shrink-0 w-7 h-7 rounded-full bg-white/20 flex items-center justify-center border border-white/30">
-                      <CheckCircle2 className="w-5 h-5 text-[#00C853]" />
-                    </div>
+                  <li key={i} className="flex items-center gap-3 text-slate-700 font-medium text-lg">
+                    <CheckCircle2 className="w-6 h-6 text-brand-purple shrink-0" />
                     <span>{feature}</span>
                   </li>
                 ))}
               </ul>
+
+              {/* Card de Bônus Interno */}
+              <div className="bg-slate-50 rounded-3xl p-5 mb-8 border-2 border-[#FFB800] shadow-[inset_0_0_10px_rgba(255,184,0,0.05)] relative z-10 group-hover:bg-slate-100 transition-colors">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                  <span className="bg-gradient-to-r from-brand-purple to-brand-blue text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-wider shadow-md flex items-center gap-1.5 whitespace-nowrap">
+                    🎁 +5 BÔNUS EXCLUSIVOS HOJE
+                  </span>
+                </div>
+                <ul className="space-y-3 mt-2">
+                  {[
+                    "20 Perguntas quebrar o gelo",
+                    "15 Dinâmicas Bíblicas extras",
+                    "Guia: Como conduzir uma célula",
+                    "Certificado de participação",
+                    "30 Jogos bíblicos para crianças"
+                  ].map((bonus, i) => (
+                    <li key={i} className="flex items-start gap-3 text-slate-700 text-sm font-bold leading-tight">
+                      <span className="shrink-0 text-brand-purple text-base">🎁</span>
+                      <span>{bonus}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
               
-              <div className="space-y-4">
+              <div className="relative z-10">
                 <a 
                   href="https://pay.wiapy.com/KyGiCuIevD" 
-                  className="w-full py-5 px-4 sm:px-6 bg-[#00C853] hover:bg-[#00E676] text-white font-black rounded-2xl transition-all shadow-[0_10px_20px_rgba(0,200,83,0.4)] hover:shadow-[0_15px_30px_rgba(0,200,83,0.5)] hover:-translate-y-1.5 flex flex-col items-center justify-center gap-1 text-base sm:text-lg uppercase tracking-wider group-hover:animate-pulse"
+                  className="w-full py-5 px-4 sm:px-6 bg-[#00C853] hover:bg-[#00E676] text-white font-black rounded-2xl transition-all shadow-[0_10px_25px_rgba(0,200,83,0.4)] hover:shadow-[0_15px_35px_rgba(0,200,83,0.5)] hover:-translate-y-1.5 flex flex-col items-center justify-center gap-1 text-base sm:text-lg uppercase tracking-wider animate-pulse"
                 >
                   <div className="flex items-center gap-2">
-                    <span>LIBERAR MEU ACESSO AGORA</span>
-                    <Flame className="w-6 h-6 fill-white" />
+                    <span>QUERO MEU ACESSO AGORA 🔥</span>
                   </div>
                 </a>
-                <p className="text-center text-white/70 text-sm font-bold flex items-center justify-center gap-2">
-                  <span className="text-emerald-400">⚡</span> Acesso imediato + garantia de 7 dias
-                </p>
               </div>
             </div>
 
@@ -544,7 +542,24 @@ export default function App() {
         </div>
       </section>
 
-      {/* 7. GARANTIA */}
+      {/* Social Proof Section (Moved from Hero) */}
+      <div className="bg-white pb-16 flex justify-center">
+        <div className="flex items-center gap-3 bg-slate-50 px-6 py-3 rounded-2xl border border-slate-100 shadow-sm">
+          <div className="flex -space-x-3">
+            {[...Array(5)].map((_, i) => (
+              <div key={i} className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-slate-200 border-2 border-white flex items-center justify-center overflow-hidden shadow-sm">
+                <img src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="User" className="w-full h-full object-cover" decoding="async" loading="lazy" />
+              </div>
+            ))}
+          </div>
+          <div className="flex flex-col items-start text-xs sm:text-sm">
+            <div className="flex text-yellow-400 mb-0.5">
+              {[...Array(5)].map((_, i) => <Star key={i} className="w-3 h-3 sm:w-4 sm:h-4 fill-current" />)}
+            </div>
+            <span className="font-bold text-slate-700 tracking-tight">+500 líderes já usam</span>
+          </div>
+        </div>
+      </div>
       <section className="py-16 bg-white border-y border-slate-100">
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
@@ -610,7 +625,7 @@ export default function App() {
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Pare de perder tempo pensando no que fazer na célula.</h2>
           <p className="text-xl text-slate-600 mb-10">Tenha um arsenal de dinâmicas prontas na palma da sua mão e foque no que realmente importa: pastorear seus jovens.</p>
           
-          <a href="#planos" className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-10 py-5 bg-gradient-to-r from-[#FFD700] to-[#FFC107] text-amber-950 rounded-xl font-black text-xl transition-all shadow-[0_10px_30px_rgba(255,215,0,0.4)] hover:shadow-[0_15px_40px_rgba(255,215,0,0.5)] hover:-translate-y-1 transform-gpu border-2 border-white/20 group">
+          <a href="#planos" className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-10 py-5 bg-gradient-to-r from-[#FFB800] to-[#FF8A00] text-amber-950 rounded-xl font-black text-xl transition-all shadow-[0_10px_30px_rgba(255,184,0,0.4)] hover:shadow-[0_15px_40px_rgba(255,184,0,0.5)] hover:-translate-y-1 transform-gpu border-2 border-white/20 group">
             ACESSAR AS DINÂMICAS AGORA
             <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
           </a>
@@ -626,62 +641,82 @@ export default function App() {
 
       {/* UPSELL MODAL */}
       {isUpsellModalOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm">
-          <div className="bg-white rounded-[20px] shadow-2xl shadow-brand-purple/20 w-full max-w-md p-6 relative animate-in fade-in zoom-in duration-300 border-2 border-brand-purple flex flex-col">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+          <div className="absolute inset-0 bg-slate-900/80 backdrop-blur-sm" onClick={() => setIsUpsellModalOpen(false)}></div>
+          <div className="bg-white rounded-[32px] shadow-2xl w-full max-w-md p-6 relative animate-in fade-in zoom-in duration-300 border-4 border-[#FFB800] flex flex-col shadow-[0_0_30px_rgba(255,184,0,0.2)]">
+            
             <button 
               onClick={() => setIsUpsellModalOpen(false)}
-              className="absolute top-4 right-4 p-1.5 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-full transition-colors z-20"
+              className="absolute top-4 right-4 p-1.5 text-slate-400 hover:text-brand-purple hover:bg-brand-purple/10 rounded-full transition-colors z-30"
             >
               <X className="w-5 h-5" />
             </button>
             
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-400 to-amber-500 text-amber-950 px-5 py-1.5 rounded-full text-[11px] sm:text-xs font-black uppercase tracking-widest shadow-lg whitespace-nowrap flex items-center gap-1.5 border border-amber-300 z-20">
-              ⭐ MAIS POPULAR ENTRE LÍDERES
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-brand-purple to-brand-blue text-white px-5 py-1.5 rounded-full text-[11px] sm:text-xs font-black uppercase tracking-widest shadow-lg whitespace-nowrap flex items-center gap-1.5 border border-white/20 z-30">
+              ⭐ OFERTA EXCLUSIVA DE SAÍDA
             </div>
             
-            <div className="text-center mb-5 mt-4">
-              <p className="text-amber-600 font-bold text-sm md:text-base mb-2 animate-pulse">
-                ⏳ Espere! Antes de sair veja essa oferta exclusiva
+            <div className="text-center mb-5 mt-4 relative z-10">
+              <p className="text-brand-purple font-bold text-sm mb-2 animate-pulse">
+                ⏳ Espere! Não perca essa oportunidade
               </p>
-              <h3 className="text-xl font-bold text-slate-900 mb-2 drop-shadow-sm">Plano Completo</h3>
-              <div className="text-[10px] font-bold text-brand-purple uppercase tracking-[0.2em] mb-1">HOJE POR APENAS</div>
-              <div className="flex items-center justify-center text-5xl font-black text-slate-900 drop-shadow-sm">
-                <span className="text-xl font-medium text-slate-500 mr-1.5 -mt-4">R$</span>16,90
+              <h3 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-brand-purple to-brand-blue mb-2 drop-shadow-sm">Plano Completo</h3>
+              <div className="text-[10px] font-bold text-brand-purple/60 uppercase tracking-[0.2em] mb-1">HOJE POR APENAS</div>
+              <div className="flex items-start justify-center text-transparent bg-clip-text bg-gradient-to-r from-brand-purple via-purple-600 to-brand-blue drop-shadow-xl py-2 h-auto px-4 overflow-visible">
+                <span className="text-base sm:text-lg font-black mr-1 mt-1 sm:mt-1.5">R$</span>
+                <span className="text-4xl sm:text-6xl font-black tracking-tight leading-none">16,90</span>
               </div>
             </div>
 
-            <ul className="space-y-3 mb-6 flex-1">
+            <ul className="space-y-3 mb-6 flex-1 relative z-10">
               {[
-                "+200 dinâmicas bíblicas para célula",
-                "Todos os bônus exclusivos",
-                "Atualizações futuras grátis",
-                "Material extra para líderes",
-                "Suporte prioritário via WhatsApp"
+                "+200 dinâmicas bíblicas",
+                "Acesso vitalício e imediato",
+                "Todos os bônus inclusos",
+                "Suporte via WhatsApp"
               ].map((feature, i) => (
-                <li key={i} className="flex items-center gap-3 text-slate-700 font-medium text-sm">
-                  <div className="flex-shrink-0 w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center border border-emerald-200">
-                    <CheckCircle2 className="w-3 h-3 text-emerald-600" />
-                  </div>
+                <li key={i} className="flex items-center gap-3 text-slate-700 font-semibold text-sm">
+                  <CheckCircle2 className="w-4 h-4 text-brand-purple shrink-0" />
                   <span>{feature}</span>
                 </li>
               ))}
             </ul>
 
-            <div className="flex flex-col gap-2 mt-auto">
+            {/* Card de Bônus Interno Simplificado para o Modal */}
+            <div className="bg-slate-50 rounded-2xl p-4 mb-6 border-2 border-[#FFB800] shadow-sm relative z-10">
+              <div className="absolute -top-2.5 left-1/2 -translate-x-1/2">
+                <span className="bg-gradient-to-r from-brand-purple to-brand-blue text-white text-[9px] font-black px-3 py-1 rounded-full uppercase tracking-wider shadow-md flex items-center gap-1.5 whitespace-nowrap">
+                  🎁 BÔNUS INCLUSOS
+                </span>
+              </div>
+              <ul className="grid grid-cols-1 gap-2 mt-1">
+                {[
+                  "20 Perguntas quebrar o gelo",
+                  "15 Dinâmicas Bíblicas extras",
+                  "Guia: Como conduzir uma célula",
+                  "Certificado + 30 Jogos"
+                ].map((bonus, i) => (
+                  <li key={i} className="flex items-center gap-2 text-slate-700 text-[11px] font-bold leading-tight">
+                    <span className="text-brand-purple">🎁</span>
+                    <span>{bonus}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="flex flex-col gap-3 mt-auto relative z-10">
               <a 
                 href="https://pay.wiapy.com/zSVDS2fcRa" 
-                className="w-full py-3 px-4 sm:px-6 bg-blue-600 hover:bg-blue-700 text-white font-black rounded-xl transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 flex items-center justify-center gap-3 text-sm sm:text-base uppercase tracking-wide"
+                className="w-full py-4 px-4 bg-[#00C853] hover:bg-[#00E676] text-white font-black rounded-xl transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 flex items-center justify-center gap-2 text-sm sm:text-base uppercase tracking-wide animate-pulse"
               >
-                <Cross className="w-5 h-5 opacity-80" />
-                <span>QUERO O PLANO COMPLETO</span>
-                <Cross className="w-5 h-5 opacity-80" />
+                <span>QUERO MEU ACESSO AGORA 🔥</span>
               </a>
-              <a 
-                href="https://pay.wiapy.com/zgx-OQDgo1"
-                className="w-full py-1.5 px-4 text-slate-500 hover:text-slate-700 font-medium text-xs transition-colors underline decoration-slate-300 hover:decoration-slate-500 underline-offset-4 block text-center"
+              <button 
+                onClick={() => setIsUpsellModalOpen(false)}
+                className="w-full py-1.5 text-slate-400 hover:text-brand-purple font-bold text-xs transition-colors underline underline-offset-4 block text-center"
               >
                 Não, obrigado. Quero apenas o plano simples.
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -714,13 +749,13 @@ function FAQItem({ question, answer }: { question: string, answer: string, key?:
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden transition-all duration-200">
+    <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden transition-all duration-200 hover:border-brand-purple/30">
       <button 
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex items-center justify-between p-5 text-left focus:outline-none"
       >
         <span className="font-semibold text-slate-900 pr-4">{question}</span>
-        <ChevronDown className={`w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+        <ChevronDown className={`w-5 h-5 text-brand-purple shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
       </button>
       <div 
         className={`px-5 overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-40 pb-5 opacity-100' : 'max-h-0 opacity-0'}`}
